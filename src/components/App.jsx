@@ -1,18 +1,35 @@
-import { Section } from './Section/Section';
-import { FormAddContact } from './FormAddContact/FormAddContact';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
+import { lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
 
-export const App = () => {
+const HomePage = lazy(() => import('../pages/HomePage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage.jsx'));
+
+const App = () => {
   return (
-    <div>
-      <Section title="Phonebook">
-        <FormAddContact />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-        <ContactList />
-      </Section>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navbar />}>
+        <Route index element={<HomePage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
 };
+
+export default App;
+
+// export const App = () => {
+//   return (
+//     <div>
+//       <Navbar />
+//       <Section title="Phonebook">
+//         <FormAddContact />
+//       </Section>
+//       <Section title="Contacts">
+//         <Filter />
+//         <ContactList />
+//       </Section>
+//     </div>
+//   );
+// };
