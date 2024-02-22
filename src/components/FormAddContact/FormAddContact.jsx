@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts-operations';
-import { Box, Button, FormControl, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
@@ -31,7 +31,7 @@ export const FormAddContact = () => {
     if (doesExist) {
       return alert(`${name} is already in contacts.`);
     }
-    console.log(name);
+
     dispatch(addContact({ name, number }));
     Notify.success('The contact was created');
 
@@ -39,42 +39,40 @@ export const FormAddContact = () => {
     setNumber('');
   };
 
-  console.log(name);
-
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      // autoComplete="off"
-    >
-      <FormControl onSubmit={handleFormSubmit}>
-        <TextField
-          type="text"
-          name="name"
-          label="Name"
-          required
-          placeholder="Adam Smith"
-          value={name}
-          onChange={handleInputChange}
-        />
-        <TextField
-          type="tel"
-          name="number"
-          label="Number"
-          required
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
-          placeholder="000-00-00"
-          value={number}
-          onChange={handleInputChange}
-        />
+    // <Box
+    //   component="form"
+    //   sx={{
+    //     '& .MuiTextField-root': { m: 1, width: '25ch' },
+    //   }}
+    //   noValidate
+    //   // autoComplete="off"
+    // >
+    <form onSubmit={handleFormSubmit}>
+      <TextField
+        type="text"
+        name="name"
+        label="Name"
+        required
+        placeholder="Adam Smith"
+        value={name}
+        onChange={handleInputChange}
+      />
+      <TextField
+        type="tel"
+        name="number"
+        label="Number"
+        required
+        pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+        placeholder="000-00-00"
+        value={number}
+        onChange={handleInputChange}
+      />
 
-        <Button type="submit" color="inherit">
-          Add contact
-        </Button>
-      </FormControl>
-    </Box>
+      <Button type="submit" color="inherit">
+        Add contact
+      </Button>
+    </form>
+    // </Box>
   );
 };
