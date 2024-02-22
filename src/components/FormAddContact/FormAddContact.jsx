@@ -31,7 +31,7 @@ export const FormAddContact = () => {
     if (doesExist) {
       return alert(`${name} is already in contacts.`);
     }
-
+    console.log(name);
     dispatch(addContact({ name, number }));
     Notify.success('The contact was created');
 
