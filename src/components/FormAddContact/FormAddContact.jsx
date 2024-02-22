@@ -1,9 +1,10 @@
-import { BtnStyled } from 'components/Button/Button.styled';
+// import { BtnStyled } from 'components/Button/Button.styled';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts-operations';
+import { Box, Button, FormControl, TextField } from '@mui/material';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
@@ -38,32 +39,42 @@ export const FormAddContact = () => {
     setNumber('');
   };
 
+  console.log(name);
+
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label>
-        Name
-        <input
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      // autoComplete="off"
+    >
+      <FormControl onSubmit={handleFormSubmit}>
+        <TextField
           type="text"
           name="name"
+          label="Name"
           required
           placeholder="Adam Smith"
           value={name}
           onChange={handleInputChange}
         />
-      </label>
-      <label>
-        Number
-        <input
+        <TextField
           type="tel"
           name="number"
+          label="Number"
           required
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
           placeholder="000-00-00"
           value={number}
           onChange={handleInputChange}
         />
-      </label>
-      <BtnStyled type="submit">Add contact</BtnStyled>
-    </form>
+
+        <Button type="submit" color="inherit">
+          Add contact
+        </Button>
+      </FormControl>
+    </Box>
   );
 };

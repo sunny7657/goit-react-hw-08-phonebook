@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SectionStyled = styled.section`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   padding: 0 15px;
 
@@ -43,7 +43,7 @@ const SectionStyled = styled.section`
     border-radius: 3px;
     border: 1px solid #7aa7c7;
     box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
-  }
+  } */
 `;
 
 export const Section = ({ title, children }) => (

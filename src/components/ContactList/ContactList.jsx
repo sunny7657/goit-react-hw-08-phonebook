@@ -9,6 +9,7 @@ import {
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
+import { List } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -26,11 +27,13 @@ export const ContactList = () => {
       {isLoading && <AppLoader />}
       {error && <p>Error: {error}</p>}
       {Boolean(contacts.length) && (
-        <ul>
+        <List
+          sx={{ width: '100%', maxWidth: 280, bgcolor: 'background.paper' }}
+        >
           {contacts.map(contact => (
             <ContactItem key={contact.id} contact={contact} />
           ))}
-        </ul>
+        </List>
       )}
     </div>
   );
