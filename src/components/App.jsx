@@ -1,19 +1,22 @@
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
+import { AppLoader } from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage.jsx'));
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navbar />}>
-        <Route index element={<HomePage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<AppLoader />}>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<HomePage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

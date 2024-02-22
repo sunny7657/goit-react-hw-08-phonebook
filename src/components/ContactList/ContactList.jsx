@@ -5,7 +5,6 @@ import {
   selectFilteredContacts,
   selectIsLoading,
 } from '../../redux/selectors';
-// import { selectFilter } from '../../redux/filter-selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
