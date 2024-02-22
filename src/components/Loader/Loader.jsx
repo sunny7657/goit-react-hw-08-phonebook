@@ -4,7 +4,7 @@ export const AppLoader = () => {
   return (
     <div
       className="Loader"
-      styles={{
+      style={{
         position: 'absolute',
         top: '50%',
         left: '50%',

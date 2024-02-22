@@ -26,9 +26,7 @@ export const ContactList = () => {
       {isLoading && <AppLoader />}
       {error && <p>Error: {error}</p>}
       {Boolean(contacts.length) && (
-        <List
-          sx={{ width: '100%', maxWidth: 280, bgcolor: 'background.paper' }}
-        >
+        <List sx={{ width: '100%', maxWidth: 280, bgcolor: 'transparent' }}>
           {contacts.map(contact => (
             <ContactItem key={contact.id} contact={contact} />
           ))}

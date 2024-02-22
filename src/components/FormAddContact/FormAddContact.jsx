@@ -42,7 +42,7 @@ export const FormAddContact = () => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, minWidth: '360px' },
       }}
       noValidate
       onSubmit={handleFormSubmit}
@@ -69,7 +69,7 @@ export const FormAddContact = () => {
           onChange={handleInputChange}
         />
 
-        <Button type="submit" color="inherit">
+        <Button type="submit" color="inherit" variant="outlined">
           Add contact
         </Button>
       </FormControl>

@@ -11,14 +11,12 @@ export const Filter = () => {
 
   return (
     <>
-      {/* <p>Find contacts by name:</p> */}
-
       <TextField
         type="search"
         name="filter"
         label="Find contacts by name"
-        // placeholder="Find contact"
         onChange={changeFilter}
+        style={{}}
       />
     </>
   );
