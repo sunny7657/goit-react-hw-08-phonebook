@@ -1,69 +1,86 @@
 import { Box, Button, FormControl, TextField } from '@mui/material';
-import { useState } from 'react';
+import theme from 'ThemeProvider/ThemeProvider';
+import { useId, useState } from 'react';
+
+const INITIAL_STATE = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 const RegistrationForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [state, setState] = useState({ ...INITIAL_STATE });
 
   const handleInputChange = evt => {
-    const { value } = evt.target;
-    if (evt.target.name === 'name') {
-      setName(value);
-    } else if (evt.target.name === 'email') {
-      setEmail(value);
-    } else if (evt.target.name === 'password') {
-      setPassword(value);
-    }
+    const { name, value } = evt.target;
+    setState({ ...state, [name]: value });
   };
+  // dopysaty logiku submit
 
   const handleFormSubmit = evt => {
     evt.preventDefault();
+    setState({ ...INITIAL_STATE });
   };
+  const nameId = useId();
+  const emailId = useId();
+  const passwordId = useId();
+  console.log(nameId);
 
+  const { name, email, password } = state;
   return (
-    <>
-      <h1>Registration</h1>
-      <Box
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        // autoComplete="off"
-      >
-        <FormControl onSubmit={handleFormSubmit}>
-          <TextField
-            type="text"
-            name="name"
-            label="Name"
-            required
-            value={name}
-            onChange={handleInputChange}
-          />
-          <TextField
-            type="email"
-            name="email"
-            label="Email"
-            required
-            value={email}
-            onChange={handleInputChange}
-          />
-          <TextField
-            type="password"
-            name="password"
-            label="Password"
-            required
-            value={password}
-            onChange={handleInputChange}
-          />
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      onSubmit={handleFormSubmit}
+    >
+      <FormControl>
+        <TextField
+          type="text"
+          name="name"
+          label="Name"
+          id={nameId}
+          required
+          value={name}
+          onChange={handleInputChange}
+          sx={{ color: theme.palette.primary.main }}
+        />
+        <TextField
+          type="email"
+          name="email"
+          label="Email"
+          id={emailId}
+          required
+          value={email}
+          onChange={handleInputChange}
+          sx={{ color: theme.palette.primary.main }}
+        />
+        <TextField
+          type="password"
+          name="password"
+          label="Password"
+          id={passwordId}
+          required
+          value={password}
+          onChange={handleInputChange}
+          sx={{
+            color: theme.palette.primary.main,
+            focusColor: theme.palette.secondary.main,
+          }}
+        />
 
-          <Button color="inherit" type="submit">
-            Submit
-          </Button>
-        </FormControl>
-      </Box>
-    </>
+        <Button
+          type="submit"
+          sx={{
+            mt: 2,
+            ...theme.palette.button,
+          }}
+        >
+          Submit
+        </Button>
+      </FormControl>
+    </Box>
   );
 };
 

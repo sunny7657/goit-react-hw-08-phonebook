@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filter-slice';
-import { TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -10,14 +10,19 @@ export const Filter = () => {
   };
 
   return (
-    <>
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1.5, width: '35ch' },
+      }}
+    >
       <TextField
         type="search"
         name="filter"
         label="Find contacts by name"
         onChange={changeFilter}
-        style={{}}
+        size="small"
       />
-    </>
+    </Box>
   );
 };

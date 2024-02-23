@@ -1,24 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import NavbarAuth from './NavbarAuth';
 import NavbarUser from './NavbarUser';
-
-// const Navbar = () => {
-//   const isLogin = false;
-
-//   return (
-//     <>
-//       <nav>
-//         <Link to="/" className={styles.link}>
-//           Logo
-//         </Link>
-
-//         {isLogin ? <NavbarUser /> : <NavbarAuth />}
-//       </nav>
-//       <Outlet />
-//     </>
-//   );
-// };
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -40,14 +22,14 @@ const Navbar = () => {
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
+                sx={{ mr: 1 }}
               >
                 <ConnectWithoutContactOutlinedIcon
                   style={{ fontSize: '28px', color: ' white' }}
                 />
               </IconButton>
             </Link>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               CONTACTS
             </Typography>
             {isLogin ? <NavbarUser /> : <NavbarAuth />}
