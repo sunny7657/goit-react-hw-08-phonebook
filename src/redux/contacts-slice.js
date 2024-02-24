@@ -4,21 +4,12 @@ import {
   addContact,
   deleteContact,
 } from './contacts-operations';
+import { pending, rejected } from '../shared-functions/redux';
 
 const initialState = {
   items: [],
   isLoading: false,
   error: null,
-};
-
-const pending = state => {
-  state.isLoading = true;
-  state.error = null;
-};
-
-const rejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
 };
 
 const contactsSlice = createSlice({

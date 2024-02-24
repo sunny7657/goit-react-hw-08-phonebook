@@ -1,4 +1,4 @@
-import { ContactItem } from 'components/ContactItem/ContactItem';
+import { ContactItem } from '../ContactItem/ContactItem';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,

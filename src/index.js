@@ -6,7 +6,7 @@ import { store } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'components/App';
 import { ThemeProvider } from '@mui/material';
-import theme from 'ThemeProvider/ThemeProvider';
+import { theme } from 'ThemeProvider/ThemeProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

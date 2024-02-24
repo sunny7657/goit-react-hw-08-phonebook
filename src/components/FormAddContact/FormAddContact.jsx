@@ -5,7 +5,7 @@ import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts-operations';
 import { Box, Button, FormControl, TextField } from '@mui/material';
 
-import theme from 'ThemeProvider/ThemeProvider';
+import { theme } from '../../ThemeProvider/ThemeProvider';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
@@ -46,9 +46,7 @@ export const FormAddContact = () => {
       sx={{
         '& .MuiTextField-root': { m: 1.5, minWidth: '360px' },
       }}
-      // noValidate
       onSubmit={handleFormSubmit}
-      // autoComplete="off"
     >
       <FormControl>
         <TextField

@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
-import theme from 'ThemeProvider/ThemeProvider';
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+import { theme } from '../ThemeProvider/ThemeProvider';
 import React from 'react';
+import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 
 const RegisterPage = () => {
   return (

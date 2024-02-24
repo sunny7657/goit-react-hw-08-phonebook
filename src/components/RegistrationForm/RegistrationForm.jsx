@@ -1,6 +1,8 @@
 import { Box, Button, FormControl, TextField } from '@mui/material';
-import theme from 'ThemeProvider/ThemeProvider';
-import { useId, useState } from 'react';
+import { theme } from '../../ThemeProvider/ThemeProvider';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signup } from '../../redux/auth/auth-operations';
 
 const INITIAL_STATE = {
   name: '',
@@ -11,27 +13,32 @@ const INITIAL_STATE = {
 const RegistrationForm = () => {
   const [state, setState] = useState({ ...INITIAL_STATE });
 
+  const dispatch = useDispatch();
+
   const handleInputChange = evt => {
     const { name, value } = evt.target;
-    setState({ ...state, [name]: value });
+
+    setState({
+      ...state,
+      [name]: value,
+    });
   };
-  // dopysaty logiku submit
 
   const handleFormSubmit = evt => {
     evt.preventDefault();
+    dispatch(signup({ ...state }));
+    console.log(dispatch(signup({ ...state })));
+
     setState({ ...INITIAL_STATE });
   };
-  const nameId = useId();
-  const emailId = useId();
-  const passwordId = useId();
-  console.log(nameId);
 
   const { name, email, password } = state;
+
   return (
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1.5, width: '25ch' },
       }}
       onSubmit={handleFormSubmit}
     >
@@ -40,7 +47,6 @@ const RegistrationForm = () => {
           type="text"
           name="name"
           label="Name"
-          id={nameId}
           required
           value={name}
           onChange={handleInputChange}
@@ -50,7 +56,6 @@ const RegistrationForm = () => {
           type="email"
           name="email"
           label="Email"
-          id={emailId}
           required
           value={email}
           onChange={handleInputChange}
@@ -60,7 +65,6 @@ const RegistrationForm = () => {
           type="password"
           name="password"
           label="Password"
-          id={passwordId}
           required
           value={password}
           onChange={handleInputChange}

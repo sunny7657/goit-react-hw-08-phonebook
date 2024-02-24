@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import theme from 'ThemeProvider/ThemeProvider';
+import { theme } from '../../ThemeProvider/ThemeProvider';
 
 export const Section = ({ title, children }) => (
   <>
