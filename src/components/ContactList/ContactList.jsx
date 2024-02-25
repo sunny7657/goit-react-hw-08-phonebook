@@ -8,7 +8,7 @@ import {
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
-import { Grid } from '@mui/material';
+import { List } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -26,15 +26,11 @@ export const ContactList = () => {
       {isLoading && <AppLoader />}
       {error && <p>Error: {error}</p>}
       {Boolean(contacts.length) && (
-        <Grid container spacing={1}>
+        <List sx={{ width: '100%', maxWidth: 280, bgcolor: 'transparent' }}>
           {contacts.map(contact => (
-            // <Grid item key={contact.id} xs={6}>
-
-            <ContactItem contact={contact} key={contact.id} />
-
-            // </Grid>
+            <ContactItem key={contact.id} contact={contact} />
           ))}
-        </Grid>
+        </List>
       )}
     </div>
   );

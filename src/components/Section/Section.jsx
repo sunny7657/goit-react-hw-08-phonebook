@@ -1,9 +1,11 @@
-import { Typography } from '@mui/material';
-import { theme } from '../../ThemeProvider/ThemeProvider';
+import { Typography, useTheme } from '@mui/material';
 
-export const Section = ({ title, children }) => (
-  <>
-    <Typography sx={{ ...theme.typography.h2 }}>{title}</Typography>
-    {children}
-  </>
-);
+export const Section = ({ title, children }) => {
+  const theme = useTheme();
+  return (
+    <>
+      <Typography sx={{ ...theme.typography.h2 }}>{title}</Typography>
+      {children}
+    </>
+  );
+};

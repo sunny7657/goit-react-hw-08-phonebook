@@ -24,7 +24,7 @@ const Navbar = () => {
                 sx={{ mr: 1 }}
               >
                 <ConnectWithoutContactOutlinedIcon
-                  style={{ fontSize: '28px', color: ' white' }}
+                  style={{ fontSize: '28px', color: '#2b2b2b' }}
                 />
               </IconButton>
             </Link>

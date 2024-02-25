@@ -7,7 +7,7 @@ export const theme = createTheme({
       main: '#9ccc65', // light green
     },
     secondary: {
-      main: '#78909c', // grey
+      main: '#5f3e0c', // grey
     },
     text: {
       primary: '#2b2b2b', // dark
@@ -38,12 +38,9 @@ export const theme = createTheme({
     },
     body2: {
       fontSize: 16,
-      color: '#90A4AE',
     },
-    sectionTitle: {
-      fontSize: '24px',
-      fontWeight: 'bold',
-      color: 'blue',
+    allVariants: {
+      color: '#2b2b2b', // Default text color
     },
   },
 
@@ -51,25 +48,23 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          '&:hover .MuiOutlinedInput-root': {
-            borderColor: 'rgba(0, 0, 0, 0.8)',
+          '& label': {
+            color: '#548b56', //   input label color
           },
-        },
-      },
-    },
-    MuiInputLabel: {
-      // Corrected to MuiInputLabel
-      styleOverrides: {
-        root: {
-          color: '#78909c', // Customize color for input label
-        },
-      },
-    },
-    MuiOutlinedInput: {
-      // Added MuiOutlinedInput to target the input itself
-      styleOverrides: {
-        root: {
-          borderColor: '#78909c', // Customize border color for input
+          '& label.Mui-focused': {
+            color: 'green', //  focused input label
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              border: '1px solid #795548ab', // border color for input
+            },
+            '&:hover fieldset': {
+              border: '2px solid #795548ab', // border color for hovered input
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#795548ab', //  focused input border
+            },
+          },
         },
       },
     },
@@ -77,7 +72,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: 'white',
-          backgroundColor: '#795548ab',
+          backgroundColor: '#795548ab', // brown
+
           '&:hover': {
             backgroundColor: '#795548d4',
           },
