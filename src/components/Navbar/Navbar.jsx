@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import NavbarAuth from './NavbarAuth';
-import NavbarUser from './NavbarUser';
+// import NavbarUser from './NavbarUser';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 
 const Navbar = () => {
-  const isLogin = false;
+  // const isLogin = false;
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +31,8 @@ const Navbar = () => {
             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               CONTACTS
             </Typography>
-            {isLogin ? <NavbarUser /> : <NavbarAuth />}
+            <NavbarAuth />
+            {/* {isLogin ? <NavbarUser /> : <NavbarAuth />} */}
           </Toolbar>
         </AppBar>
       </Box>
