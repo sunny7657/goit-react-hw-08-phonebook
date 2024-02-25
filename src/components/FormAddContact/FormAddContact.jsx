@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts-operations';
-import { Box, Button, FormControl, TextField } from '@mui/material';
-
-import { theme } from '../../ThemeProvider/ThemeProvider';
+import { Box, Button, FormControl, TextField, useTheme } from '@mui/material';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
@@ -13,6 +11,7 @@ export const FormAddContact = () => {
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  // const theme = useTheme();
 
   const handleInputChange = evt => {
     const { value } = evt.target;
@@ -71,10 +70,14 @@ export const FormAddContact = () => {
 
         <Button
           type="submit"
-          sx={{
-            mt: 2,
-            ...theme.palette.button,
-          }}
+          // sx={{
+          //   mt: 2,
+          //   color: 'white',
+          //   backgroundColor: theme.palette.button.backgroundColor,
+          //   '&:hover': {
+          //     backgroundColor: theme.palette.button['&:hover'].backgroundColor,
+          //   },
+          // }}
         >
           Add contact
         </Button>

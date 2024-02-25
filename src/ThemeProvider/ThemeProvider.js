@@ -15,14 +15,6 @@ export const theme = createTheme({
     error: {
       main: '#d84315', // red
     },
-    button: {
-      color: 'white',
-      backgroundColor: '#B0BEC5',
-      '&:hover': {
-        backgroundColor: '#90A4AE',
-      },
-    },
-    input: {},
   },
 
   typography: {
@@ -48,31 +40,46 @@ export const theme = createTheme({
       fontSize: 16,
       color: '#90A4AE',
     },
-
-    // Custom style for the title
     sectionTitle: {
       fontSize: '24px',
       fontWeight: 'bold',
       color: 'blue',
     },
-    components: {
-      // Style for input label color
-      MuiInputLabel: {
-        styleOverrides: {
-          root: {
-            color: '#333', // Customize color for input label
+  },
+
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '&:hover .MuiOutlinedInput-root': {
+            borderColor: 'rgba(0, 0, 0, 0.8)',
           },
         },
       },
-      // Style for button
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            color: 'white', // Text color of the button
-            backgroundColor: '#9ccc65', // Background color of the button
-            '&:hover': {
-              backgroundColor: '#8cb252', // Background color of the button on hover
-            },
+    },
+    MuiInputLabel: {
+      // Corrected to MuiInputLabel
+      styleOverrides: {
+        root: {
+          color: '#78909c', // Customize color for input label
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      // Added MuiOutlinedInput to target the input itself
+      styleOverrides: {
+        root: {
+          borderColor: '#78909c', // Customize border color for input
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+          backgroundColor: '#795548ab',
+          '&:hover': {
+            backgroundColor: '#795548d4',
           },
         },
       },

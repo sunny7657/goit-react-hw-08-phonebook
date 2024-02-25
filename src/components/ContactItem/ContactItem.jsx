@@ -1,6 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts-operations';
-import { IconButton, ListItem, ListItemText, Typography } from '@mui/material';
+import {
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemText,
+  Typography,
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactItem = ({ contact: { id, name, number } }) => {
@@ -22,6 +28,7 @@ export const ContactItem = ({ contact: { id, name, number } }) => {
         primary={<Typography variant="body1">{name}</Typography>}
         secondary={<Typography variant="body2">Tel.: {number}</Typography>}
       />
+      <Divider />
     </ListItem>
   );
 };
