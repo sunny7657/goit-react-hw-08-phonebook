@@ -5,12 +5,12 @@ import { Button } from '@mui/material';
 const NavbarAuth = () => {
   return (
     <>
-      <Button color="inherit">
-        <NavLink to="/signup">Sign up </NavLink>
-      </Button>
+      <NavLink to="/signup">
+        <Button sx={{ backgroundColor: 'transparent' }}>Sign up </Button>
+      </NavLink>
 
       <NavLink to="/login">
-        <Button color="inherit">Log in</Button>
+        <Button sx={{ backgroundColor: 'transparent' }}>Log in</Button>
       </NavLink>
     </>
   );

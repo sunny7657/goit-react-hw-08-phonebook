@@ -5,7 +5,7 @@ import { AppLoader } from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage'));
-const RegisterPage = lazy(() => import('../pages/RegisterPage.jsx'));
+const SignupPage = lazy(() => import('../pages/SignupPage.jsx'));
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<HomePage />} />
-          <Route path="signup" element={<RegisterPage />} />
+          <Route path="signup" element={<SignupPage />} />
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
@@ -23,18 +23,3 @@ const App = () => {
 };
 
 export default App;
-
-// export const App = () => {
-//   return (
-//     <div>
-//       <Navbar />
-//       <Section title="Phonebook">
-//         <FormAddContact />
-//       </Section>
-//       <Section title="Contacts">
-//         <Filter />
-//         <ContactList />
-//       </Section>
-//     </div>
-//   );
-// };

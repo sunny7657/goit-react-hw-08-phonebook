@@ -19,16 +19,16 @@ export const theme = createTheme({
 
   typography: {
     h1: {
-      fontSize: 60,
+      fontSize: 50,
     },
     h2: {
-      fontSize: 48,
+      fontSize: 44,
     },
     h3: {
-      fontSize: 40,
+      fontSize: 36,
     },
     h4: {
-      fontSize: 20,
+      fontSize: 22,
     },
     subtitle: {
       fontSize: 20,

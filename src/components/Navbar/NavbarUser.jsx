@@ -1,12 +1,15 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectorUserName } from '../../redux/selectors';
+import { Button } from '@mui/material';
 
-const NavbarUser = () => {
+export const NavbarUser = () => {
+  const userName = useSelector(selectorUserName);
   return (
     <div>
-      Svitlana
-      <button>Log out</button>
+      {userName}
+      <Button variant="text" color="secondary">
+        Log out
+      </Button>
     </div>
   );
 };
-
-export default NavbarUser;

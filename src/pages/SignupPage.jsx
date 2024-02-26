@@ -1,6 +1,4 @@
 import { Typography } from '@mui/material';
-import { theme } from '../ThemeProvider/ThemeProvider';
-import React from 'react';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import {
   selectAuthError,
@@ -10,6 +8,10 @@ import {
 import { useSelector } from 'react-redux';
 import { AppLoader } from 'components/Loader/Loader';
 import { Navigate } from 'react-router-dom';
+import {
+  StyledSignupContainer,
+  StyledSignupSection,
+} from './SignupPage.styled';
 
 const RegisterPage = () => {
   const authLoading = useSelector(selectAuthLoading);
@@ -21,14 +23,14 @@ const RegisterPage = () => {
   }
 
   return (
-    <main>
-      <Typography variant="h1" sx={theme.typography.heading}>
-        Registration
-      </Typography>
-      {authLoading && <AppLoader />}
-      <RegistrationForm />
-      {authError && <p>Error: {authError}</p>}
-    </main>
+    <StyledSignupSection>
+      <StyledSignupContainer>
+        <Typography variant="h1">Registration</Typography>
+        {authLoading && <AppLoader />}
+        <RegistrationForm />
+        {authError && <p>Error: {authError}</p>}
+      </StyledSignupContainer>
+    </StyledSignupSection>
   );
 };
 

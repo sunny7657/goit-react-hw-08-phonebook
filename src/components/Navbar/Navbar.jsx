@@ -1,15 +1,19 @@
 import { Link, Outlet } from 'react-router-dom';
 import NavbarAuth from './NavbarAuth';
-// import NavbarUser from './NavbarUser';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
+import { useSelector } from 'react-redux';
+import { selectIsLogin } from '../../redux/selectors';
+import { NavbarUser } from './NavbarUser';
 
 const Navbar = () => {
-  // const isLogin = false;
+  const isLogin = useSelector(selectIsLogin);
+  console.log(isLogin);
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -31,8 +35,7 @@ const Navbar = () => {
             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               CONTACTS
             </Typography>
-            <NavbarAuth />
-            {/* {isLogin ? <NavbarUser /> : <NavbarAuth />} */}
+            {isLogin ? <NavbarUser /> : <NavbarAuth />}
           </Toolbar>
         </AppBar>
       </Box>
