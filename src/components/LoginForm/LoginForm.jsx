@@ -5,12 +5,11 @@ import { useDispatch } from 'react-redux';
 import { signup } from '../../redux/auth/auth-operations';
 
 const INITIAL_STATE = {
-  name: '',
   email: '',
   password: '',
 };
 
-const RegistrationForm = () => {
+const LoginForm = () => {
   const [state, setState] = useState({ ...INITIAL_STATE });
 
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const RegistrationForm = () => {
     setState({ ...INITIAL_STATE });
   };
 
-  const { name, email, password } = state;
+  const { email, password } = state;
 
   return (
     <Box
@@ -43,15 +42,6 @@ const RegistrationForm = () => {
       onSubmit={handleFormSubmit}
     >
       <FormControl>
-        <TextField
-          type="text"
-          name="name"
-          label="Name"
-          required
-          value={name}
-          onChange={handleInputChange}
-          sx={{ color: theme.palette.primary.main }}
-        />
         <TextField
           type="email"
           name="email"
@@ -88,4 +78,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;

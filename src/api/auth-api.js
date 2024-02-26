@@ -9,3 +9,8 @@ export const signupRequest = async body => {
   console.log(data);
   return data;
 };
+
+export const loginRequest = async body => {
+  const { data } = await instance.post('/users/login', body);
+  return data;
+};
