@@ -2,7 +2,7 @@ import { Box, Button, FormControl, TextField } from '@mui/material';
 import { theme } from '../../ThemeProvider/ThemeProvider';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login, signup } from '../../redux/auth/auth-operations';
+import { login } from '../../redux/auth/auth-operations';
 
 const INITIAL_STATE = {
   email: '',

@@ -1,11 +1,14 @@
-import React from 'react';
 import { StyledHomeSection, StyledHomeContainer } from './HomePage.styled';
+import { Typography } from '@mui/material';
 
 const HomePage = () => {
   return (
     <StyledHomeSection>
       <StyledHomeContainer>
-        <h1>HomePage</h1>
+        <Typography variant="h1">Welcome!</Typography>
+        {/* <Typography variant="h3">
+          Please, sign up / log in to access your own phonebook!
+        </Typography> */}
       </StyledHomeContainer>
     </StyledHomeSection>
   );

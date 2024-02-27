@@ -8,7 +8,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const SignupPage = lazy(() => import('../pages/SignupPage.jsx'));
 const LoginPage = lazy(() => import('../pages/LoginPage.jsx'));
 
-const App = () => {
+const AppRoutes = () => {
   return (
     <Suspense fallback={<AppLoader />}>
       <Routes>
@@ -24,4 +24,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AppRoutes;
