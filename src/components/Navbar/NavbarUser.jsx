@@ -7,7 +7,11 @@ export const NavbarUser = () => {
   return (
     <div>
       {userName}
-      <Button variant="text" color="secondary">
+      <Button
+        variant="text"
+        color="secondary"
+        sx={{ backgroundColor: 'transparent' }}
+      >
         Log out
       </Button>
     </div>

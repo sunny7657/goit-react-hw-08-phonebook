@@ -12,7 +12,6 @@ import { NavbarUser } from './NavbarUser';
 
 const Navbar = () => {
   const isLogin = useSelector(selectIsLogin);
-  console.log(isLogin);
 
   return (
     <>

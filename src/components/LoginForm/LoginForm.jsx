@@ -2,7 +2,7 @@ import { Box, Button, FormControl, TextField } from '@mui/material';
 import { theme } from '../../ThemeProvider/ThemeProvider';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signup } from '../../redux/auth/auth-operations';
+import { login, signup } from '../../redux/auth/auth-operations';
 
 const INITIAL_STATE = {
   email: '',
@@ -25,8 +25,8 @@ const LoginForm = () => {
 
   const handleFormSubmit = evt => {
     evt.preventDefault();
-    dispatch(signup({ ...state }));
-    console.log(dispatch(signup({ ...state })));
+    dispatch(login({ ...state }));
+    console.log(dispatch(login({ ...state })));
 
     setState({ ...INITIAL_STATE });
   };

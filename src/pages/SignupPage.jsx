@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Alert, Typography } from '@mui/material';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import {
   selectAuthError,
@@ -28,7 +28,11 @@ const RegisterPage = () => {
         <Typography variant="h1">Registration</Typography>
         {authLoading && <AppLoader />}
         <RegistrationForm />
-        {authError && <p>Error: {authError}</p>}
+        {authError && (
+          <Alert variant="outlined" severity="error">
+            Error: {authError}
+          </Alert>
+        )}
       </StyledSignupContainer>
     </StyledSignupSection>
   );

@@ -6,7 +6,6 @@ const instance = axios.create({
 
 export const signupRequest = async body => {
   const { data } = await instance.post('/users/signup', body);
-  console.log(data);
   return data;
 };
 

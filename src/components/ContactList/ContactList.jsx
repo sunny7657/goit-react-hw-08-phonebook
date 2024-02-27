@@ -8,7 +8,7 @@ import {
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
-import { List } from '@mui/material';
+import { Alert, List } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -24,7 +24,11 @@ export const ContactList = () => {
   return (
     <div>
       {isLoading && <AppLoader />}
-      {error && <p>Error: {error}</p>}
+      {error && (
+        <Alert variant="outlined" severity="error">
+          Error: {error}
+        </Alert>
+      )}
       {Boolean(contacts.length) && (
         <List sx={{ width: '100%', maxWidth: 280, bgcolor: 'transparent' }}>
           {contacts.map(contact => (
