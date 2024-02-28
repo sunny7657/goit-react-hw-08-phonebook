@@ -31,10 +31,14 @@ const Navbar = () => {
                 />
               </IconButton>
             </Link>
-            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-              CONTACTS
-            </Typography>
-            {isLogin ? <NavbarUser /> : <NavbarAuth />}
+            <Link to="/contacts">
+              <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+                CONTACTS
+              </Typography>
+            </Link>
+            <Box sx={{ marginLeft: 'auto' }}>
+              {isLogin ? <NavbarUser /> : <NavbarAuth />}
+            </Box>
           </Toolbar>
         </AppBar>
       </Box>

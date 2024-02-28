@@ -26,7 +26,6 @@ const RegistrationForm = () => {
   const handleFormSubmit = evt => {
     evt.preventDefault();
     dispatch(signup({ ...state }));
-    console.log(dispatch(signup({ ...state })));
 
     setState({ ...INITIAL_STATE });
   };
