@@ -3,6 +3,7 @@ import {
   currentRequest,
   loginRequest,
   signupRequest,
+  logoutRequest,
 } from '../../api/auth-api';
 
 export const signup = createAsyncThunk(
@@ -44,5 +45,17 @@ export const current = createAsyncThunk(
         return false;
       }
     },
+  }
+);
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await logoutRequest();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
