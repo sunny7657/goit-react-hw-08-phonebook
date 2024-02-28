@@ -4,23 +4,13 @@ import {
   StyledSignupSection,
 } from './SignupPage.styled';
 import LoginForm from 'components/LoginForm/LoginForm';
-import {
-  selectAuthError,
-  selectAuthLoading,
-  selectIsLogin,
-} from '../redux/selectors';
+import { selectAuthError, selectAuthLoading } from '../redux/selectors';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
 import { AppLoader } from 'components/Loader/Loader';
 
 const LoginPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  const isLogin = useSelector(selectIsLogin);
-
-  if (isLogin) {
-    return <Navigate to="/contacts" />;
-  }
 
   return (
     <StyledSignupSection>

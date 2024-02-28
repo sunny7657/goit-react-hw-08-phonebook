@@ -1,13 +1,8 @@
 import { Alert, Typography } from '@mui/material';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
-import {
-  selectAuthError,
-  selectAuthLoading,
-  selectIsLogin,
-} from '../redux/selectors';
+import { selectAuthError, selectAuthLoading } from '../redux/selectors';
 import { useSelector } from 'react-redux';
 import { AppLoader } from 'components/Loader/Loader';
-import { Navigate } from 'react-router-dom';
 import {
   StyledSignupContainer,
   StyledSignupSection,
@@ -16,11 +11,6 @@ import {
 const RegisterPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  const isLogin = useSelector(selectIsLogin);
-
-  if (isLogin) {
-    return <Navigate to="/contacts" />;
-  }
 
   return (
     <StyledSignupSection>

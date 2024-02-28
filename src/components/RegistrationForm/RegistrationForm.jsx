@@ -1,5 +1,4 @@
 import { Box, Button, FormControl, TextField } from '@mui/material';
-import { theme } from '../../ThemeProvider/ThemeProvider';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signup } from '../../redux/auth/auth-operations';
@@ -50,7 +49,6 @@ const RegistrationForm = () => {
           required
           value={name}
           onChange={handleInputChange}
-          sx={{ color: theme.palette.primary.main }}
         />
         <TextField
           type="email"
@@ -59,7 +57,6 @@ const RegistrationForm = () => {
           required
           value={email}
           onChange={handleInputChange}
-          sx={{ color: theme.palette.primary.main }}
         />
         <TextField
           type="password"
@@ -68,17 +65,12 @@ const RegistrationForm = () => {
           required
           value={password}
           onChange={handleInputChange}
-          sx={{
-            color: theme.palette.primary.main,
-            focusColor: theme.palette.secondary.main,
-          }}
         />
 
         <Button
           type="submit"
           sx={{
             mt: 2,
-            ...theme.palette.button,
           }}
         >
           Submit

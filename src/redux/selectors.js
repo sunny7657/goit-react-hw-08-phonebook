@@ -19,4 +19,6 @@ export const selectAuthLoading = state => state.auth.isLoading;
 export const selectAuthError = state => state.auth.error;
 export const selectIsLogin = state => state.auth.isLogin;
 
-export const selectorUserName = state => state.auth.user.name;
+export const selectUserName = state => state.auth.user;
+
+export const selectToken = state => state.auth.user.token;

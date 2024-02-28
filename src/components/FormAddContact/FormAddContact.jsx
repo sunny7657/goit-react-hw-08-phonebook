@@ -11,7 +11,6 @@ export const FormAddContact = () => {
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-  // const theme = useTheme();
 
   const handleInputChange = evt => {
     const { value } = evt.target;

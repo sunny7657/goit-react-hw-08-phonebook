@@ -1,5 +1,4 @@
 import { Box, Button, FormControl, TextField } from '@mui/material';
-import { theme } from '../../ThemeProvider/ThemeProvider';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
@@ -26,7 +25,6 @@ const LoginForm = () => {
   const handleFormSubmit = evt => {
     evt.preventDefault();
     dispatch(login({ ...state }));
-    console.log(dispatch(login({ ...state })));
 
     setState({ ...INITIAL_STATE });
   };
@@ -49,7 +47,6 @@ const LoginForm = () => {
           required
           value={email}
           onChange={handleInputChange}
-          sx={{ color: theme.palette.primary.main }}
         />
         <TextField
           type="password"
@@ -58,17 +55,12 @@ const LoginForm = () => {
           required
           value={password}
           onChange={handleInputChange}
-          sx={{
-            color: theme.palette.primary.main,
-            focusColor: theme.palette.secondary.main,
-          }}
         />
 
         <Button
           type="submit"
           sx={{
             mt: 2,
-            ...theme.palette.button,
           }}
         >
           Submit
