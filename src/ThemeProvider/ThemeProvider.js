@@ -64,11 +64,11 @@ export const theme = createTheme({
             '&.Mui-focused fieldset': {
               borderColor: '#795548ab', //  focused input border
             },
-            // '& input:-webkit-autofill': {
-            //   background: 'red', // background color for autofill
-            //   '&::placeholder': {
-            //     color: '#ccc', // placeholder color for autofill
-            //   },
+            '& input: -webkit-autofill': {
+              WebkitBoxShadow: '0 0 0px 1000px #cddc3957 inset',
+            }, // background color for autofill
+            // '&::placeholder': {
+            //   color: '#ccc', // placeholder color for autofill
             // },
           },
         },
