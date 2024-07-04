@@ -15,26 +15,6 @@ const initialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  // reducers: {
-  // fetchContactsLoading: loadingReducer,
-  // fetchContactsSuccess: (state, { payload }) => {
-  //   state.isLoading = false;
-  //   state.items = payload;
-  // },
-  // fetchContactsError: rejected,
-  // addContactLoading: loadingReducer,
-  // addContactSuccess: (state, { payload }) => {
-  //   state.isLoading = false;
-  //   state.items.push(payload);
-  // },
-  // addContactError: rejected,
-  // deleteContactLoading: loadingReducer,
-  // deleteContactSuccess: (state, { payload }) => {
-  //   state.isLoading = false;
-  //   state.items = state.items.filter(({ id }) => id !== payload);
-  // },
-  // deleteContactError: rejected,
-  // },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, pending)

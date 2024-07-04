@@ -19,7 +19,7 @@ export const Filter = () => {
       <TextField
         type="search"
         name="filter"
-        label="Find contacts by name"
+        label="Find contacts"
         onChange={changeFilter}
         size="small"
       />

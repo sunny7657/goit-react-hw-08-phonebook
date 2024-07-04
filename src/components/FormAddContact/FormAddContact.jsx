@@ -1,41 +1,30 @@
 import { Notify } from 'notiflix';
-import { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts-operations';
-import { Box, Button, FormControl, TextField } from '@mui/material';
+import { selectContacts } from '../../redux/selectors';
+import { Box, Button, TextField } from '@mui/material';
 
-export const FormAddContact = () => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
+const FormAddContact = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const handleInputChange = evt => {
-    const { value } = evt.target;
-    if (evt.target.name === 'name') {
-      setName(value);
-    } else if (evt.target.name === 'number') {
-      setNumber(value);
-    }
-  };
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: { name: '', number: '' },
+  });
 
-  const handleFormSubmit = evt => {
-    evt.preventDefault();
-    const doesExist = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
+  const handleFormSubmit = data => {
+    const doesExist = contacts.some(contact => contact.name === data.name);
 
     if (doesExist) {
-      return alert(`${name} is already in contacts.`);
+      Notify.failure('You have the contact with this name');
+      return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(addContact(data));
+    reset();
     Notify.success('The contact was created');
-
-    setName('');
-    setNumber('');
   };
 
   return (
@@ -44,38 +33,37 @@ export const FormAddContact = () => {
       sx={{
         '& .MuiTextField-root': { m: 1.5, minWidth: '360px' },
       }}
-      onSubmit={handleFormSubmit}
+      onSubmit={handleSubmit(handleFormSubmit)}
     >
-      <FormControl>
-        <TextField
-          type="text"
-          name="name"
-          label="Name"
-          required
-          placeholder="Adam Smith"
-          value={name}
-          onChange={handleInputChange}
-        />
-        <TextField
-          type="tel"
-          name="number"
-          label="Number"
-          required
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
-          placeholder="000-00-00"
-          value={number}
-          onChange={handleInputChange}
-        />
-
-        <Button
-          type="submit"
-          sx={{
-            mt: 2,
-          }}
-        >
-          Add contact
-        </Button>
-      </FormControl>
+      <TextField
+        label="Name"
+        required
+        placeholder="Adam Smith"
+        {...register('name', { required: 'This field is required' })}
+      />
+      <TextField
+        label="Number"
+        required
+        placeholder="000-00-00"
+        {...register('number', {
+          required: 'This field is required',
+          minLength: {
+            value: 7,
+            message: 'Please, enter the number 000-00-00',
+          },
+          pattern: /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/,
+        })}
+      />
+      <Button
+        type="submit"
+        sx={{
+          mt: 2,
+        }}
+      >
+        Add contact
+      </Button>
     </Box>
   );
 };
+
+export default FormAddContact;
