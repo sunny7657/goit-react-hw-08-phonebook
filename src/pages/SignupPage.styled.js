@@ -14,11 +14,7 @@ export const StyledSignupSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(
-        rgb(196 245 186 / 74%),
-        rgb(241 240 201 / 60%)
-      ),
-      url('https://cdn.pixabay.com/photo/2017/07/26/06/34/art-2540641_1280.png');
+    background: #f3eeea;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

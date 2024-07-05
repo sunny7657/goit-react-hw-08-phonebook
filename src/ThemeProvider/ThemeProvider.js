@@ -4,10 +4,10 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#9ccc65', // light green
+      main: '#776B5D', // light green________brown
     },
     secondary: {
-      main: '#5f3e0c', // grey
+      main: '#F3EEEA', // grey
     },
     text: {
       primary: '#2b2b2b', // dark
@@ -40,7 +40,7 @@ export const theme = createTheme({
       fontSize: 16,
     },
     allVariants: {
-      color: '#2b2b2b', // Default text color
+      color: '#302c27', // Default text color
     },
   },
 
@@ -77,11 +77,11 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: 'white',
-          backgroundColor: '#795548ab', // brown
+          color: '#776B5D',
+          backgroundColor: '#B0A695', // brown
 
           '&:hover': {
-            backgroundColor: '#795548d4',
+            color: '#302c27',
           },
         },
       },

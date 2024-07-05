@@ -14,11 +14,7 @@ export const StyledContactsSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(
-        rgb(196 245 186 / 81%),
-        rgb(241 240 201 / 73%)
-      ),
-      url('https://cdn.pixabay.com/photo/2022/03/18/07/05/envelope-7076001_1280.png');
+    background: #f3eeea;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
