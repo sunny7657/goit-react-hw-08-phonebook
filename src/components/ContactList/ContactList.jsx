@@ -8,7 +8,7 @@ import {
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
-import { Alert, List } from '@mui/material';
+import { Alert, Box } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -21,8 +21,13 @@ export const ContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const handleEditContact = id => {
+    // Tu dodaj logikę edycji kontaktu, na przykład otwarcie modala z formularzem edycji
+    console.log('Edit contact with id:', id);
+  };
+
   return (
-    <div>
+    <Box sx={{ padding: 2 }}>
       {isLoading && <AppLoader />}
       {error && (
         <Alert variant="outlined" severity="error">
@@ -30,12 +35,16 @@ export const ContactList = () => {
         </Alert>
       )}
       {Boolean(contacts.length) && (
-        <List sx={{ width: '100%', maxWidth: 280, bgcolor: 'transparent' }}>
+        <Box>
           {contacts.map(contact => (
-            <ContactItem key={contact.id} contact={contact} />
+            <ContactItem
+              key={contact.id}
+              contact={contact}
+              onEdit={handleEditContact}
+            />
           ))}
-        </List>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };

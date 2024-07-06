@@ -31,7 +31,7 @@ const FormAddContact = () => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1.5, minWidth: '360px' },
+        '& .MuiTextField-root': { m: 1.5, minWidth: '280px' },
       }}
       onSubmit={handleSubmit(handleFormSubmit)}
     >

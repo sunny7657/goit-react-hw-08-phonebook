@@ -15,37 +15,35 @@ const Navbar = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="fixed">
-          <Toolbar>
-            <Link to="/">
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 1 }}
-              >
-                <ConnectWithoutContactOutlinedIcon
-                  style={{ fontSize: '28px', color: '#2b2b2b' }}
-                />
-              </IconButton>
-            </Link>
-            <Link to="/contacts">
-              <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                CONTACTS
-              </Typography>
-            </Link>
-            <Box sx={{ marginLeft: 'auto' }}>
-              {isLogin ? <NavbarUser /> : <NavbarAuth />}
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <AppBar position="fixed">
+        <Toolbar>
+          <Link to="/">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 1 }}
+            >
+              <ConnectWithoutContactOutlinedIcon
+                style={{ fontSize: '28px', color: '#2b2b2b' }}
+              />
+            </IconButton>
+          </Link>
+          <Link to="/contacts">
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+              CONTACTS
+            </Typography>
+          </Link>
+          <Box sx={{ marginLeft: 'auto' }}>
+            {isLogin ? <NavbarUser /> : <NavbarAuth />}
+          </Box>
+        </Toolbar>
+      </AppBar>
 
       <Toolbar />
 
-      <Box>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <Outlet />
       </Box>
     </>
