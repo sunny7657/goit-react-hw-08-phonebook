@@ -1,25 +1,16 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Box } from '@mui/material';
+import { Button } from '@mui/material';
 
 const NavbarAuth = () => {
   return (
-    <Box display="flex" gap={2}>
-      <Button
-        component={NavLink}
-        to="/signup"
-        sx={{ backgroundColor: 'transparent' }}
-      >
-        Sign up
-      </Button>
-      <Button
-        component={NavLink}
-        to="/login"
-        sx={{ backgroundColor: 'transparent' }}
-      >
-        Log in
-      </Button>
-    </Box>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <NavLink to="/signup">
+        <Button sx={{ backgroundColor: 'transparent' }}>Sign up</Button>
+      </NavLink>
+      <NavLink to="/login">
+        <Button sx={{ backgroundColor: 'transparent' }}>Log in</Button>
+      </NavLink>
+    </div>
   );
 };
 

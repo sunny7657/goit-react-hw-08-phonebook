@@ -15,9 +15,9 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="fixed" sx={{ height: '64px' }}>
         <Toolbar>
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: 'none' }}>
             <IconButton
               size="large"
               edge="start"
@@ -25,12 +25,10 @@ const Navbar = () => {
               aria-label="menu"
               sx={{ mr: 1 }}
             >
-              <ConnectWithoutContactOutlinedIcon
-                style={{ fontSize: '28px', color: '#2b2b2b' }}
-              />
+              <ConnectWithoutContactOutlinedIcon sx={{ fontSize: 28 }} />
             </IconButton>
           </Link>
-          <Link to="/contacts">
+          <Link to="/contacts" style={{ textDecoration: 'none' }}>
             <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               CONTACTS
             </Typography>
@@ -40,12 +38,8 @@ const Navbar = () => {
           </Box>
         </Toolbar>
       </AppBar>
-
       <Toolbar />
-
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        <Outlet />
-      </Box>
+      <Outlet />
     </>
   );
 };

@@ -22,9 +22,8 @@ export const ContactItem = ({ contact: { id, name, number }, onEdit }) => {
         boxShadow: 3,
         borderRadius: 2,
         bgcolor: '#f9f9f9',
-        width: '100%', // Set card width to 100%
-        '@media (min-width:600px)': {
-          width: 'auto', // Set card width to auto on larger screens
+        '@media (max-width: 600px)': {
+          width: '100%',
         },
       }}
     >
@@ -33,19 +32,19 @@ export const ContactItem = ({ contact: { id, name, number }, onEdit }) => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexDirection: 'row', // Ensure items are in a row
-          '@media (max-width:600px)': {
-            flexDirection: 'column', // Stack items vertically on small screens
-            alignItems: 'flex-start', // Align items to start on small screens
-          },
         }}
       >
-        <Box
-          sx={{
-            flex: 1, // Allow content to take remaining space
-          }}
-        >
-          <Typography variant="h6" component="div">
+        <Box sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px',
+            }}
+          >
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -53,13 +52,7 @@ export const ContactItem = ({ contact: { id, name, number }, onEdit }) => {
           </Typography>
         </Box>
         <CardActions
-          sx={{
-            marginLeft: 'auto',
-            '@media (max-width:600px)': {
-              marginTop: 1, // Add margin-top on small screens
-              marginLeft: 0, // Remove left margin on small screens
-            },
-          }}
+          sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}
         >
           <IconButton aria-label="edit" onClick={() => onEdit(id)}>
             <EditIcon />
