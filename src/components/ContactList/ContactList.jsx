@@ -6,7 +6,7 @@ import {
   selectIsLoading,
 } from '../../redux/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contacts-operations';
+import { fetchContacts } from '../../redux/contacts/contacts-operations';
 import { AppLoader } from '../Loader/Loader';
 import { Alert, List } from '@mui/material';
 

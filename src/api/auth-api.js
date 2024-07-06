@@ -12,7 +12,9 @@ const setToken = token => {
 };
 
 export const signupRequest = async body => {
-  const { data } = await authInstance.post('/users/signup', body);
+  const request = await authInstance.post('/users/signup', body);
+  console.log('request', request);
+  const { data } = request;
   setToken(data.token); //after this line we already have token in instance  and there is no need to save it again
   return data;
 };

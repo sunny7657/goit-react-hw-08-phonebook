@@ -2,7 +2,7 @@ import { Notify } from 'notiflix';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contacts-operations';
+import { addContact } from '../../redux/contacts/contacts-operations';
 import { selectContacts } from '../../redux/selectors';
 import { Box, Button, TextField } from '@mui/material';
 

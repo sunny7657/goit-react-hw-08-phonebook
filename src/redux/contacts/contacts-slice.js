@@ -4,7 +4,7 @@ import {
   addContact,
   deleteContact,
 } from './contacts-operations';
-import { pending, rejected } from '../shared-functions/redux';
+import { pending, rejected } from '../../shared-functions/redux';
 
 const initialState = {
   items: [],

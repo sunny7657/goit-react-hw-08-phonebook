@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts-operations';
+import { deleteContact } from '../../redux/contacts/contacts-operations';
 import {
   Divider,
   IconButton,
