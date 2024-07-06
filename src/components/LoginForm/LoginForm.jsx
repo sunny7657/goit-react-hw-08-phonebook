@@ -1,35 +1,29 @@
-import { Box, Button, FormControl, TextField } from '@mui/material';
-import { useState } from 'react';
+import { Box, Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
-
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-};
+import { useForm } from 'react-hook-form';
+import { Notify } from 'notiflix';
 
 const LoginForm = () => {
-  const [state, setState] = useState({ ...INITIAL_STATE });
-
+  const { register, handleSubmit, reset } = useForm({
+    initialValue: {
+      email: '',
+      password: '',
+    },
+  });
   const dispatch = useDispatch();
 
-  const handleInputChange = evt => {
-    const { name, value } = evt.target;
+  const handleFormSubmit = async data => {
+    const result = await dispatch(login({ ...data }));
 
-    setState({
-      ...state,
-      [name]: value,
-    });
+    if (result.meta.requestStatus === 'rejected') {
+      Notify.failure('The email or password is incorrect.');
+      return;
+    }
+
+    Notify.success('Welcome back!');
+    reset();
   };
-
-  const handleFormSubmit = evt => {
-    evt.preventDefault();
-    dispatch(login({ ...state }));
-
-    setState({ ...INITIAL_STATE });
-  };
-
-  const { email, password } = state;
 
   return (
     <Box
@@ -37,35 +31,30 @@ const LoginForm = () => {
       sx={{
         '& .MuiTextField-root': { m: 1.5, minWidth: '360px' },
       }}
-      onSubmit={handleFormSubmit}
+      onSubmit={handleSubmit(handleFormSubmit)}
     >
-      <FormControl>
-        <TextField
-          type="email"
-          name="email"
-          label="Email"
-          required
-          value={email}
-          onChange={handleInputChange}
-        />
-        <TextField
-          type="password"
-          name="password"
-          label="Password"
-          required
-          value={password}
-          onChange={handleInputChange}
-        />
-
-        <Button
-          type="submit"
-          sx={{
-            mt: 2,
-          }}
-        >
-          Submit
-        </Button>
-      </FormControl>
+      <TextField
+        type="email"
+        name="email"
+        label="Email"
+        required
+        {...register('email', { required: 'This field is required' })}
+      />
+      <TextField
+        type="password"
+        name="password"
+        label="Password"
+        required
+        {...register('password', { required: 'This field is required' })}
+      />
+      <Button
+        type="submit"
+        sx={{
+          mt: 2,
+        }}
+      >
+        Submit
+      </Button>
     </Box>
   );
 };

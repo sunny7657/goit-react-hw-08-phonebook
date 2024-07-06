@@ -14,10 +14,14 @@ const RegistrationForm = () => {
 
   const handleFormSubmit = async data => {
     const result = await dispatch(signup({ ...data }));
-    console.log(result);
+
     if (result.meta.requestStatus === 'rejected') {
-      Notify.failure('This email is already in use or the password is wrong.');
+      Notify.failure(
+        'This email is already in use, or the password is incorrect.'
+      );
+      return;
     }
+
     Notify.success('Welcome!');
     reset();
   };
