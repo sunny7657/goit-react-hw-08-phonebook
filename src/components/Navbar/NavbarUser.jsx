@@ -12,7 +12,7 @@ export const NavbarUser = () => {
     const result = await dispatch(logout());
 
     if (result.meta.requestStatus === 'rejected') {
-      Notify.failure('Oops... Something went wrong. Please, try again!');
+      Notify.failure('Oops... Something went wrong. Please try again!');
       return;
     }
 
@@ -20,11 +20,11 @@ export const NavbarUser = () => {
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Typography variant="body1" sx={{ mr: 2 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Typography variant="body1" color="textPrimary">
         {name || 'User'}
       </Typography>
-      <Button onClick={onLogout} variant="text" color="primary">
+      <Button onClick={onLogout} variant="outlined" color="primary">
         Log out
       </Button>
     </div>
