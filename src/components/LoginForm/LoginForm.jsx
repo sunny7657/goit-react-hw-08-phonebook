@@ -2,14 +2,31 @@ import { Box, Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import { Notify } from 'notiflix';
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('This field is required')
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email address'),
+  password: Yup.string()
+    .required('This field is required')
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/,
+      'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number'
+    ),
+});
+
 const LoginForm = () => {
-  const { register, handleSubmit, reset } = useForm({
-    initialValue: {
-      email: '',
-      password: '',
-    },
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
   });
   const dispatch = useDispatch();
 
@@ -35,17 +52,17 @@ const LoginForm = () => {
     >
       <TextField
         type="email"
-        name="email"
         label="Email"
-        required
-        {...register('email', { required: 'This field is required' })}
+        error={!!errors.email}
+        helperText={errors.email?.message}
+        {...register('email')}
       />
       <TextField
         type="password"
-        name="password"
         label="Password"
-        required
-        {...register('password', { required: 'This field is required' })}
+        error={!!errors.password}
+        helperText={errors.password?.message}
+        {...register('password')}
       />
       <Button
         type="submit"

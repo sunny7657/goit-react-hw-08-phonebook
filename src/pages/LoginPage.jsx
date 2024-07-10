@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, Typography, Box, Paper } from '@mui/material';
-import LoginForm from 'components/LoginForm/LoginForm'; // Formularz logowania
+import LoginForm from 'components/LoginForm/LoginForm';
 import { selectAuthError, selectAuthLoading } from '../redux/selectors';
 import { useSelector } from 'react-redux';
 import { AppLoader } from 'components/Loader/Loader';

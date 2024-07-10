@@ -1,13 +1,36 @@
 import { Box, Button, TextField } from '@mui/material';
-
 import { useDispatch } from 'react-redux';
 import { signup } from '../../redux/auth/auth-operations';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import { Notify } from 'notiflix';
 
+const registrationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('This field is required')
+    .matches(/^[a-zA-Z\s]+$/, 'Name can only contain letters and spaces'),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('This field is required')
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email address'),
+  password: Yup.string()
+    .min(8, 'Password must be at least 8 characters long')
+    .required('This field is required')
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/,
+      'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number'
+    ),
+});
+
 const RegistrationForm = () => {
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: { name: '', email: '', password: '' },
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(registrationSchema),
   });
 
   const dispatch = useDispatch();
@@ -36,26 +59,24 @@ const RegistrationForm = () => {
     >
       <TextField
         type="text"
-        name="name"
         label="Name"
-        required
-        {...register('name', { required: 'This field is required' })}
+        error={!!errors.name}
+        helperText={errors.name?.message}
+        {...register('name')}
       />
       <TextField
         type="email"
-        name="email"
         label="Email"
-        required
-        {...register('email', { required: 'This field is required' })}
+        error={!!errors.email}
+        helperText={errors.email?.message}
+        {...register('email')}
       />
       <TextField
         type="password"
-        name="password"
         label="Password"
-        required
-        {...register('password', {
-          required: 'Please, enter at list 8 symbols',
-        })}
+        error={!!errors.password}
+        helperText={errors.password?.message}
+        {...register('password')}
       />
       <Button
         type="submit"
