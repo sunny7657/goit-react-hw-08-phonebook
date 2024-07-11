@@ -11,9 +11,10 @@ export const Filter = () => {
 
   return (
     <Box
-      component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1.5, width: '35ch' },
+        display: 'flex',
+        justifyContent: 'center',
+        mb: 2, // Margin bottom
       }}
     >
       <TextField
@@ -22,6 +23,10 @@ export const Filter = () => {
         label="Find contacts"
         onChange={changeFilter}
         size="small"
+        fullWidth
+        sx={{
+          maxWidth: '400px', // Maximum width for larger screens
+        }}
       />
     </Box>
   );

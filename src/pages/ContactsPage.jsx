@@ -11,9 +11,10 @@ const ContactsPage = () => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
+        p: 2,
       }}
     >
-      <Grid container spacing={4} direction={{ xs: 'column', md: 'row' }}>
+      <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ padding: 3 }}>
             <Typography variant="h4" component="h2" gutterBottom>

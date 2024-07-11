@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/contacts-operations';
 import { selectContacts } from '../../redux/selectors';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, TextField, Grid } from '@mui/material';
 
 const FormAddContact = () => {
   const contacts = useSelector(selectContacts);
@@ -31,37 +31,64 @@ const FormAddContact = () => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1.5, minWidth: '280px' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        p: 2,
+        backgroundColor: 'background.paper',
+        borderRadius: 2,
+        boxShadow: 3,
       }}
       onSubmit={handleSubmit(handleFormSubmit)}
     >
-      <TextField
-        label="Name"
-        required
-        placeholder="Adam Smith"
-        {...register('name', { required: 'This field is required' })}
-      />
-      <TextField
-        label="Number"
-        required
-        placeholder="000-00-00"
-        {...register('number', {
-          required: 'This field is required',
-          minLength: {
-            value: 7,
-            message: 'Please, enter the number 000-00-00',
-          },
-          pattern: /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/,
-        })}
-      />
-      <Button
-        type="submit"
-        sx={{
-          mt: 2,
-        }}
-      >
-        Add contact
-      </Button>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <TextField
+            label="Name"
+            required
+            fullWidth
+            placeholder="Adam Smith"
+            {...register('name', { required: 'This field is required' })}
+            sx={{
+              mb: 2,
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Number"
+            required
+            fullWidth
+            placeholder="000-00-00"
+            {...register('number', {
+              required: 'This field is required',
+              minLength: {
+                value: 7,
+                message: 'Please, enter the number 000-00-00',
+              },
+              pattern: /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/,
+            })}
+            sx={{
+              mb: 2,
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{
+              mt: 2,
+              mb: 1,
+            }}
+          >
+            Add contact
+          </Button>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

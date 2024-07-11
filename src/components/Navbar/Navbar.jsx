@@ -3,9 +3,9 @@ import NavbarAuth from './NavbarAuth';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import { useSelector } from 'react-redux';
 import { selectIsLogin } from '../../redux/selectors';
 import { NavbarUser } from './NavbarUser';
@@ -25,7 +25,7 @@ const Navbar = () => {
               aria-label="menu"
               sx={{ mr: 1 }}
             >
-              <ConnectWithoutContactOutlinedIcon sx={{ fontSize: 28 }} />
+              <ContactPhoneOutlinedIcon sx={{ fontSize: 28 }} />
             </IconButton>
           </Link>
           <Link to="/contacts" style={{ textDecoration: 'none' }}>
