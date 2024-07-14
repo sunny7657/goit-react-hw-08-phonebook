@@ -15,7 +15,7 @@ const LoginPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
+        hangingPunctuationHeight: '100vh',
         backgroundColor: theme => theme.palette.background.paper,
         padding: 3,
       }}

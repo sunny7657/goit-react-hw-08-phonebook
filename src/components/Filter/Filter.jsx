@@ -14,7 +14,7 @@ export const Filter = () => {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mb: 2, // Margin bottom
+        mb: 2, 
       }}
     >
       <TextField
@@ -25,7 +25,7 @@ export const Filter = () => {
         size="small"
         fullWidth
         sx={{
-          maxWidth: '400px', // Maximum width for larger screens
+          maxWidth: '400px', 
         }}
       />
     </Box>

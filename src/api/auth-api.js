@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const authInstance = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com',
+  baseURL: '/api',
 });
 
 const setToken = token => {
@@ -13,7 +13,7 @@ const setToken = token => {
 
 export const signupRequest = async body => {
   const { data } = await authInstance.post('/users/signup', body);
-  setToken(data.token); //after this line we already have token in instance  and there is no need to save it again
+  setToken(data.token);
   return data;
 };
 
