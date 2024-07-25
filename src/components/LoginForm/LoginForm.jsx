@@ -17,7 +17,7 @@ const LoginForm = () => {
     const result = await dispatch(login({ ...data }));
 
     if (result.meta.requestStatus === 'rejected') {
-      Notify.failure('The email or password is incorrect.');
+      Notify.failure('The email or password is incorrect. Please, try again.');
       return;
     }
 

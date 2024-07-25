@@ -40,7 +40,7 @@ const RegistrationForm = () => {
 
     if (result.meta.requestStatus === 'rejected') {
       Notify.failure(
-        'This email is already in use, or the password is incorrect.'
+        'This email is already in use, or the password is incorrect. Please, try again.'
       );
       return;
     }
